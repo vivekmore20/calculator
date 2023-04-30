@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        .viv{
+            border: 2px solid black;
+            width: 400px;
+            display: inline-block;
+            text-align:center;
+            line-height: 100px;
+            margin-bottom: 0px;
+            background-color: black;
+            border-radius: 10px;
+            margin-right: 0px;margin-left: 500px;
+            margin-top: 50px;
+
+        }
+        .screen{
+            border-radius: 10px;
+            border: 2px solid white;
+            width: 350px;
+            height: 150px;
+            margin-left: 23px;
+            margin-top: 20px;
+            margin-right: 25px;
+            /* background-color: rgba(82, 179, 82, 0.774); */
+            background-color: gray;
+            font-size: 30px;
+            text-align: center;
+            color:black;
+        }
+        .btn-primary{
+            height:50px;
+            width:80px;
+            color:gray;
+            background-color: black;
+            margin-right: 5px;
+            font-size: 30px;
+            border-radius: 20px;
+            border: 2px solid red;
+            margin-bottom: 5px;
+            cursor: pointer;
+
+        }
+        .btn-primary:hover{
+            color: red;
+            background-color: black;
+        }
+        .button{
+            height:70px;
+            
+        }
+        .button1{
+            height: 70px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="durga">
+
+    </div>
+    <script type="text/babel">
+        var a='';
+        var num=[]
+        var ans;
+        function Clr(x)
+        {
+            return <button class="btn-primary" onClick={clr}>{x.no}</button>
+        }
+        function Button(x)
+        {
+            return <button type="submit" class="btn-primary" onClick={()=> send(x.no)}>{x.no}</button>
+        }
+        function clr()
+        {
+            a='';
+            num=[];
+            ans="";
+            var pr=document.getElementById('t')
+            pr.value=[];
+        }
+        function Equ(x)
+        {
+            return <button type="submit" class="btn-primary" onClick={equal}>{x.no}</button>
+        }
+        function send(digit)
+        {
+            num.push(digit)
+                a='';
+            for(var i=0;i<num.length;i++)
+            {
+                a=a+num[i];
+            }
+            document.getElementById('t').value=a;
+        }
+        function equal()
+        {
+            ans=eval(a);
+            document.getElementById('t').value=ans;
+            num=[];
+            a='';
+            num.push(ans);
+        }
+        function PrintHello()
+        {
+            return <div class="viv">
+                        <input id="t" type="text" class="screen" 
+                         
+                        />
+                    <div class="button">
+                        
+                       <Button no="7"/>
+                       <Button no="8"/>
+                       <Button no="9"/>
+                       <Button no="*"/>
+                    </div>
+                    <div class="button">
+                        <Button no="4"/>
+                       <Button no="5"/>
+                       <Button no="6"/>
+                       <Button no="-"/>
+                    </div>
+                    <div class="button">
+                        <Button no="1"/>
+                       <Button no="2"/>
+                       <Button no="3"/>
+                       <Button no="+"/>
+                    </div>
+                      
+                    <div class="button1" >
+                        <Button no="/"/>
+                       <Button no="0"/>
+                       <Equ no="="/>
+                      <span class="button1">
+                        <Clr no="Clr"/>
+                        </span>
+
+                    </div>
+                      
+                </div>
+        }
+        
+        var root=ReactDOM.createRoot(document.querySelector('#durga'))
+        root.render(<PrintHello/>)
+    </script>
+    
+</body>
+</html>
